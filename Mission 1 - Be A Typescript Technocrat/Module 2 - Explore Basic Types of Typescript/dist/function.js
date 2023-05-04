@@ -3,6 +3,10 @@
 function add(num1, num2) {
     return num1 + num2;
 }
+//default parameter
+function add1(num1, num2 = 10) {
+    return num1 + num2;
+}
 //arrow function
 const addArrow = (num1, num2) => num1 + num2;
 //call back function
