@@ -35,20 +35,19 @@ type Name1={
 const result6 = createArray2<Name,string>({name:"Md.Hamid Hosen",age:34},"sds");
 
 // Spread Operator
+// const addMeInMyCrushMind =<T> (myInfo:T)=>{
+//     const crush = "No jani";
+//     const newData = {...myInfo,crush};
+//     return newData;
+// };
+// const myInfo = {
+//     name:"Md.Hamid Hosen",
+//     age:100,
+//     salary:2000000
+// }
 
-const addMeInMyCrushMind =<T> (myInfo:T)=>{
-    const crush = "No jani";
-    const newData = {...myInfo,crush};
-    return newData;
-};
-const myInfo = {
-    name:"Md.Hamid Hosen",
-    age:100,
-    salary:2000000
-}
-
-const result7=addMeInMyCrushMind(myInfo);
-console.log(result7.age);
-console.log(result7.crush);
-console.log(result7.name);
-console.log(result7.salary);
+// const result7=addMeInMyCrushMind(myInfo);
+// console.log(result7.age);
+// console.log(result7.crush);
+// console.log(result7.name);
+// console.log(result7.salary);
