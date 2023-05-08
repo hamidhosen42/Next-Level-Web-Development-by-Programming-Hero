@@ -7,7 +7,7 @@ type MandatoryType ={
 interface MandatoryTypeInterface{
     name:string,
     age:number,
-    salary:number
+    salary:number,
 }
 const addMeInMyCrushMind =<T extends MandatoryTypeInterface> (myInfo:T)=>{
     const crush = "No jani";
