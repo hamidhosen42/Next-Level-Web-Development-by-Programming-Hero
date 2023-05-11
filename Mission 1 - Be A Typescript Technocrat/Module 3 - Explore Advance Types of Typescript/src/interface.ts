@@ -1,52 +1,46 @@
-type User1={
+type User = {
     name:string,
     age:number
 }
 
-type exdendedUser=User1 &{
-    role:string
+type extendedUser = User & {
+    role:string;
 }
 
 interface IUser{
     name:string,
     age:number
-};
-
-interface IExtendedUser extends IUser{
-    role:string
-};
-
-type rollName =number;
-
-// Object,funtion,array
-type addNumbersType=(num1:number,num2:number)=>number;
-
-interface IAddNumbers{
-    (num1:number,num2:number):number
 }
 
-const addNUmbers : addNumbersType=(num1:number,num2:number) => num1+num2;
-const addNUmbers1 : IAddNumbers=(num1:number,num2:number) => num1+num2;
-
-type rollNumbersType=number[]
-interface IRollNumbers{
-    [index:number]:string,
+interface IExtendUser extends IUser{
+    role:string;
 }
-
-const rollNumber1 : IRollNumbers = ['1','2','3'];//[index]
-
-const users:exdendedUser={
-    name:"Moinul",
-    age:23,
-    role:"Lorem"
-};
-
-const userWithTypeTypeAlias:User1={
+const user:extendedUser={
     name:"Md.Hamid Hosen",
-    age:32
+    age:24,
+    role:"Lorem"
 }
 
-const userWithInterfaces:IUser={
-    name:"Interface",
-    age:23
-};
+const UserWithTypeAlias:User ={
+    name:"Md.Hamid Hosen",
+    age:24
+}
+
+console.log(UserWithTypeAlias.name);
+console.log(UserWithTypeAlias.age);
+
+const userWithInterface:IUser={
+    name:"Md.Hamid Hosen1",
+    age:21
+}
+
+console.log(userWithInterface.name,userWithInterface.age);
+
+// Object,function,array
+
+type addNumberType = (num1:number,num2:number)=>number;
+interface IAddNUmbers{
+    (num1:number,num2:number):number;
+}
+const addNumber:addNumberType = (num1,num2)=>num1+num2;
+const addNumber1:IAddNUmbers = (num1,num2)=>num1+num2;

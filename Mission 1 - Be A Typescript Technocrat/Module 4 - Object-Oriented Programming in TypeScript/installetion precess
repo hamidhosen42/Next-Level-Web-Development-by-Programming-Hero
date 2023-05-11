@@ -1,0 +1,10 @@
+// !Instalation step
+
+// 1. index.ts
+// 2. terminal with -> tsc .\index.ts
+// 3. tsc --init
+// 4. npm init -y 
+// 4. pakage.json file with push sripts into ->  "start": "nodemon index.js",
+// 5. npm i -D nodemon
+// 6. npm i ts-node-dev --save-dev -> auto tsc compailer ts to js convert
+// 7. we use pakage.json file with push sripts into , replace with "nodemon index.js" -> "ts-node-dev --respawn --transpile-only index.ts"
