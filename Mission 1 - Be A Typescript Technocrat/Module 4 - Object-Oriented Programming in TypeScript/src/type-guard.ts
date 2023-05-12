@@ -94,3 +94,4 @@ const animal1 = new Dog("abcddgsfs","dog");
 const animal2 = new Dog("sdsafadf","Cat");
 
 getAnimal(animal1);
+getAnimal(animal2);
