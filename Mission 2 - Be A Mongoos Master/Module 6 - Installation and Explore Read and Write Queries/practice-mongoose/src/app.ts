@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    // res.send('Hello World!');
+    res.send('Hello World!');
     // next();
 
     // inserting a test data into mongodb
@@ -98,6 +98,33 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
             required: true,
         },
     });
+
+    // 3. Create a Model.
+    const User = model<IUser>('User', userSchema);
+
+    // 4. Connect to MongoDB
+    const createUserToDB = async () => {
+        const user = new User({
+            id: "19100",
+            role: "student",
+            password: "2323424",
+            name: {
+                firstName: "Md.Hamid Hosen",
+                middleName: "Hosen",
+                lastName: "Azad",
+            },
+            gender: "male",
+            email: "haskdkf@gmail.com",
+            contactNo: "34353",
+            emergencyContactNo: "23224",
+            presentAddress: "Chittagong",
+            permanentAddress: "Satkania"
+        });
+        await user.save();
+        console.log(user);
+    };
+
+    createUserToDB();
 });
 
 export default app;

@@ -16,4 +16,4 @@ async function pracice() {
         console.log(`Failed to connect database`, err);
     }
 };
-pracice()
+pracice();
