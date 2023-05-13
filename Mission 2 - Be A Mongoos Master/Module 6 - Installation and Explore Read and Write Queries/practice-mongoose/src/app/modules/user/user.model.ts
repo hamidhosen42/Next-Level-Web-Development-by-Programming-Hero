@@ -63,3 +63,5 @@ const User = model<IUser>('User', userSchema);
 
 // instance methods --> instance er methods
 // class -> instance + methods -> instance methods
+
+export default User;
