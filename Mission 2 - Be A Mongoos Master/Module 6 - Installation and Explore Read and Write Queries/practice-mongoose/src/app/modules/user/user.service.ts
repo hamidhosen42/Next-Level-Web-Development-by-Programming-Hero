@@ -1,10 +1,37 @@
 import { User } from './user.model';
-import { IUser} from "./user.interface";
+import { IUser } from "./user.interface";
 
 // 4. Connect to MongoDB
 
-// insert data into mongodb
+//! insert data into mongodb
 export const createUserToDB = async (payload: IUser): Promise<IUser> => {
+    // creating a new user
+    const user = await new User(payload); // User -> class user->instance
+
+    await user.save(); //build in instance method custom instance method
+    const fullName: string = user.fullName(); // custom instance method
+    console.log(fullName);
+    return user;
+};
+
+//! get all user
+export const getUsersFromDB = async (): Promise<IUser[]> => {
+    const users = User.find();
+    return users;
+};
+
+//! get user by id
+export const getUserByIdFromDB = async (payload: string): Promise<IUser | null> => {
+    const user = await User.findOne({ id: payload }, { name: 1 });
+    return user;
+};
+
+//! get Admin users  
+export const getAdminUserFromDB = async (payload: string): Promise<IUser | null> => {
+    const user = new User(); //static user
+    return user;
+};
+
     // const user =await new User({
     //     id: "444444",
     //     role: "student",
@@ -21,15 +48,3 @@ export const createUserToDB = async (payload: IUser): Promise<IUser> => {
     //     presentAddress: "Chittagong",
     //     permanentAddress: "Satkania"
     // });
-
-    const user = await new User(payload);
-
-    await user.save();
-    // console.log(user);
-    return user;
-};
-
-export const getUsersFromDB = async ():Promise<IUser[]> => {
-    const users = User.find();
-    return users;
-};
