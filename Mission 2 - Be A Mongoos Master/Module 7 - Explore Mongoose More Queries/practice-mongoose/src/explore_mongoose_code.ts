@@ -52,3 +52,28 @@
 //         {age: { $gt: 15 }}
 //     ]
 // }).projection({ age: 1 }).sort({ age: 1 }) // Explicit
+
+
+// Explore $exists , $type , $size operator
+// Matches documents that have the specified field. 
+// db.practice.find({ age: { $exists: false } })
+// db.practice.find({ skills: { $exists: true } })
+// { field: { $exists: <boolean> } }
+
+// Selects documents if a field is of the specified type.
+// db.practice.find({friends:{$type: 'array'}})
+// { field: { $type: <BSON type> } }
+// { field: { $type: [ <BSON type1> , <BSON type2>, ... ] } }
+
+// size
+// db.practice.find( { skills: { $size: 1 } } ).project({skills:1});
+// db.collection.find( { field: { $size: 2 } } );
+
+
+
+
+
+
+
+
+
