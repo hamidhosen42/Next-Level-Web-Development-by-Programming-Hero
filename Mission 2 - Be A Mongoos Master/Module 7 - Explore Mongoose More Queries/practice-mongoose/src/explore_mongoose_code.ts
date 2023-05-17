@@ -70,6 +70,27 @@
 // db.collection.find( { field: { $size: 2 } } );
 
 
+// The $all operator selects the documents where the value of a field is an array that contains all the specified elements. To specify an $all expression, use the following prototype:
+// db.practice.find({interests:"Travelling"}).project({interests:1})
+// db.practice.find({"interests.0":"Travelling"}).project({interests:1})
+// db.practice.find({"interests":[ "Travelling", "Writing", "Cooking" ]}).project({interests:1})
+// db.practice.find({interests:{$all:[ "Travelling", "Writing", "Cooking" ]}}).project({interests:1})
+// { <field>: { $all: [ <value1> , <value2> ... ] } }
+
+// equivalent to
+// db.practice.find({
+//     $and: [
+//         { "interests": "Travelling" },
+//         { "interests": "Writing" },
+//         { "interests": "Cooking" },
+//     ]
+// }).project({interests:1})
+// { $and: [ { tags: "ssl" }, { tags: "security" } ] }
+
+// $elemMatch
+// The  $elemMatch operator matches documents that contain an array field with at least one element that matches all the specified query criteria.
+// db.practice.find({skills:{$elemMatch: {name:"JAVA",level:"Intermidiate"}}}).project({skills:1})
+// { <field>: { $elemMatch: { <query1>, <query2>, ... } } }
 
 
 
