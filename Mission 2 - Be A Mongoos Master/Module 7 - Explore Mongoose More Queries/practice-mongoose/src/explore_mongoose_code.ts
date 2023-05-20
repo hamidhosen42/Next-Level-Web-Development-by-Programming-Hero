@@ -92,9 +92,49 @@
 // db.practice.find({skills:{$elemMatch: {name:"JAVA",level:"Intermidiate"}}}).project({skills:1})
 // { <field>: { $elemMatch: { <query1>, <query2>, ... } } }
 
+// db.practice.findOne(
+//     {kak update korte chao},
+//     {ki update korte chao},
+//     {option}
+//     )
 
+// { $set: { <field1>: <value1>, ... } }
 
+// db.practice.find({_id:ObjectId("6406ad63fc13ae5a40000067")})
+//   .projection({})
+//   .sort({_id:-1})
+//   .limit(100)
 
+// db.practice.updateOne(
+//     { _id: ObjectId("6406ad63fc13ae5a40000067") },
+//     {
+//         $set: {
+//             country: 'Bangladesh'
+//         }
+//     })
 
+//{ $set: { <field1>: <value1>, ... } } 
 
+// db.practice.updateOne(
+//     { _id: ObjectId("6406ad63fc13ae5a40000067") },
+//     {
+//         $addToSet: {
+//           interests: 'Reading'
+//         }
+//     })
 
+// { $addToSet: { <field1>: <value1>, ... } }
+
+// db.practice.updateOne(
+//     { _id: ObjectId("6406ad63fc13ae5a40000067") },
+//     { $addToSet: { interests: { $each: ["camera", "electronics", "accessories"] } } }
+// )
+// db.practice.updateOne(
+//     { _id: ObjectId("6406ad63fc13ae5a40000067") },
+//     { $push:{ interests: { $each: ["camera", "electronics", "accessories"] } } }
+// )
+// db.inventory.updateOne(
+//   { _id: 2 },
+//   { $addToSet: { tags: { $each: [ "camera", "electronics", "accessories" ] } } }
+//  )
+// $each Modifier You can use the  $addToSet operator with the $each modifier. The $each modifier allows the  $addToSet operator to add multiple values to the array field.
