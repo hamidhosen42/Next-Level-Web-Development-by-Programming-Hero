@@ -148,3 +148,10 @@
 //     { $unset: { interests: "" } }
 // )
 // { $unset: { <field1>: "", ... } }
+
+// Explore $inc , $min , How to explore documents
+// increment -> { $inc: { <field1>: <amount1>, <field2>: <amount2>, ... } }
+// db.practice.updateOne(
+//     { _id: ObjectId("6406ad63fc13ae5a40000067") },
+//     { $inc: { age: 1 } }
+// )
