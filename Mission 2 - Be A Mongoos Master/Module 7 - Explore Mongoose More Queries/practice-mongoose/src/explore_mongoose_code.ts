@@ -133,8 +133,18 @@
 //     { _id: ObjectId("6406ad63fc13ae5a40000067") },
 //     { $push:{ interests: { $each: ["camera", "electronics", "accessories"] } } }
 // )
+
 // db.inventory.updateOne(
 //   { _id: 2 },
 //   { $addToSet: { tags: { $each: [ "camera", "electronics", "accessories" ] } } }
 //  )
 // $each Modifier You can use the  $addToSet operator with the $each modifier. The $each modifier allows the  $addToSet operator to add multiple values to the array field.
+
+
+// The  $unset operator deletes a particular field. Consider the following syntax:
+
+// db.practice.updateOne(
+//     { _id: ObjectId("6406ad63fc13ae5a40000067") },
+//     { $unset: { interests: "" } }
+// )
+// { $unset: { <field1>: "", ... } }
