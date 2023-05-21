@@ -39,9 +39,39 @@ db.practice.aggregate([
 ```
 
 ```
-db.students.aggregate([
-    {$sort: {name:1}}
-]);
+// 8-4: Explore $group
+db.practice.aggregate([
+    // Add field stage
+    {
+        $addFields: {
+            salary: {
+                $toInt: {
+                    $floor: {
+                        $multiply: [{ "$rand": {} }, 100]
+                    }
+                }
+            }
+
+        }
+    },
+    { $merge: "practice" }
+])
+
+db.practice.aggregate([
+    // Add field stage
+    {
+        $group: {
+            _id: {
+                age: "$age",
+                gender: "$gender"
+
+            }
+        }
+    }
+])
+
+// reference -- >
+// use case 1. operator $push $sum case2. Reference to a field
 
 ```
 
