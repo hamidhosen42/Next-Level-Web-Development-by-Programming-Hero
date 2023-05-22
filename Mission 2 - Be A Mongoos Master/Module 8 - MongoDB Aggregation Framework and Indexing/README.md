@@ -177,20 +177,20 @@ db.practice.aggregate([
 ```
 
 ```
-db.students.aggregate([
-    { $match: { "scores.type": "exam" } },
-    { $sort: { "scores.0.score": -1 } },
+// 8-7: Explore $unwind
+// $unwind Deconstructs an array field from the input documents to output a document for each element. Each output document is the input document with the value of the array field replaced by the element.
+db.practice.aggregate([
+    // unwind stage 
     {
-        $project: {
-            scores: {
-                $slice: ["$scores", 1]
-            }
-        }
+        $unwind: "$education"
+    }, {
+        $group: { _id: "$education", count: { $sum: 1 } },
     },
+    {
+        $group: { _id: null, count: { $sum: 1 } },
+    }
+])
 
-    { $sort: { "scores.score": -1 } }
-
-]);
 
 ```
 
