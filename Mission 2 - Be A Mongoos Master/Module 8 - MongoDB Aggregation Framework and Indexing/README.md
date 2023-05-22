@@ -76,12 +76,38 @@ db.practice.aggregate([
 ```
 
 ```
-db.students.aggregate([
-    { $match: { "scores.type": "exam" } },
-    {$sort: {
-        "scores.0.score":-1
-    }}
-]);
+//8-5: Explore $group more , accumulator, $sort , $limit
+db.practice.aggregate([
+    {
+        $match: {
+            age: {
+                $gt: 18
+            }
+        }
+    },
+    // group state
+    {
+        $group: {
+            _id: "$salary",
+            person: { $sum: 1 }
+        },
+    },
+    // project state
+    {
+        $project: {
+            _id: 0,
+            salary: "$_id",
+            person: 1
+        },
+    },
+    //sort stage
+    {
+        $sort: { _id: -1 }
+    },
+    {
+        $limit: 3
+    }
+])
 
 ```
 
