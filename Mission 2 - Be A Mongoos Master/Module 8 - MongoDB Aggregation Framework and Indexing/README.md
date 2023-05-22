@@ -112,18 +112,67 @@ db.practice.aggregate([
 ```
 
 ```
-db.students.aggregate([
-    { $match: { "scores.type": "exam" } },
-    { $sort: { "scores.0.score": -1 } },
+// 8-6:Explore Accumulator Operator using aggregation
+
+db.practice.aggregate([
     {
-        $project: {
-            scores: {
-                $slice: ["$scores", 1]
+        $match: {
+            age: {
+                $gt: 18
             }
         }
+    },
+    {
+        $match: {
+            gender: 'Male'
+        }
+    },
+    // group state
+    {
+        $group: {
+            _id: "$salary",
+            person: { $sum: 1 }
+        },
+    },
+    // project state
+    {
+        $project: {
+            _id: 0,
+            salary: "$_id",
+            person: 1
+        },
+    },
+    //sort stage
+    {
+        $sort: { _id: -1 }
+    },
+    {
+        $limit: 3
     }
+])
 
-]);
+db.practice.aggregate([
+    // group state
+    {
+        $group: {
+            _id: null,
+            count: { $sum: "$salary" },
+            maxSalary: { $max: "$salary" },
+            minSalary: { $min: "$salary" },
+            avgSalary:{$avg:"$salary"},
+        },
+    },
+    //project state
+    {
+        $project: {
+            countt:1,
+            maxSalary:1,
+            minSalary:1,
+            avgSalary:1,
+            salaryRange:{$subtract: ["$maxSalary","$minSalary"]}
+        }
+    }
+])
 
 ```
 
