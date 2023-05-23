@@ -195,21 +195,29 @@ db.practice.aggregate([
 ```
 
 ```
-db.students.aggregate([
-    { $match: { "scores.type": "exam" } },
-    // { $sort: { "scores.0.score": -1 } },
-    // {
-    //     $project: {
-    //         scores: {
-    //             $slice: ["$scores", 1]
-    //         }
-    //     }
-    // },
+// 8-8: Explore powerful Multi Stage Pipeline
 
-    // { $sort: { "scores.score": -1 } },
-    {$unwind: "$scores"}
-
-]);
+db.practice.aggregate([
+    { $match: { _id: ObjectId("6406ad63fc13ae5a40000068") } },
+    {
+        $facet: {
+            // sub pipline
+            "friendsCount": [
+                // stage
+                { $project: { friendsCount: { $size: "$friends" } } }
+            ],
+            // sub pipline
+            "interestsCount": [
+                // stage
+                { $project: { interestsCount: { $size: "$interests" } } }
+            ],
+            // sub pipline
+            "skillsCount": [
+                // stage
+                { $project: { skillsCount: { $size: "$skills" } } }
+            ],
+        }
+    }])
 ```
 
 ```
